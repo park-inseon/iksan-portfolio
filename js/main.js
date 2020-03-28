@@ -81,7 +81,11 @@ function init(){
            moveToSection(idx);
         });
     });
-    window.addEventListener('resize', handleWindowResize);
+    
+    //PC 메뉴
+    [].forEach.call(gnbMenu, function(elem){
+        elem.addEventListener('mouseover', showMenu);
+    });  
     
     //메인 슬라이드
     cloneFirstSlide(mainSlide);
@@ -102,6 +106,8 @@ function init(){
     handleSlideMoveBtn(exSlide);
     autoSlideTimer(exSlide);
     
+    window.addEventListener('resize', handleWindowResize);
+    
     setCalendar();
 }
 
@@ -112,20 +118,10 @@ function checkPlatform(){
             platform = 'mobile';
             addMobileMenuEvent(); //모바일 메뉴
             changeToMobileSlide(); //모바일 슬라이드
-            //PC 메뉴
-            [].forEach.call(gnbMenu, function(elem){
-                elem.addEventListener('touchstart', showMenu);
-            });    
-            header.addEventListener('mouseleave', hideMenu);
         } else {
             platform = 'pc';
-            //PC 메뉴
-            [].forEach.call(gnbMenu, function(elem){
-                elem.addEventListener('mouseover', showMenu);
-            });    
-            header.addEventListener('mouseleave', hideMenu);
             //모바일 메뉴
-            if(window.innerWidth <= 1020) {
+            if(window.innerWidth <= 768) {
                 addMobileMenuEvent();
             }
         }
@@ -343,11 +339,9 @@ function setSliderHeight(targetSlide){
                 height = image.offsetHeight
             }
         }
-        console.log(height);
     });
     targetSlide.slideShow.style.height = height + 'px';
     targetSlide.slider.style.height = height + 'px';
-    console.log(height);
 }
 
 //페이저 생성
