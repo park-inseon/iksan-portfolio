@@ -117,7 +117,7 @@ function checkPlatform(){
         if(filter.indexOf(navigator.platform.toLowerCase())<0){
             platform = 'mobile';
             addMobileMenuEvent(); //모바일 메뉴
-            changeToMobileBanner(); //모바일 슬라이드
+            changeToMobileSlide(); //모바일 슬라이드
         } else {
             platform = 'pc';
             //모바일 메뉴
@@ -142,9 +142,9 @@ function removeMobileMenuEvent(){
     hamburgerBtn.removeEventListener('click', showMobileMenu);
 }
 
-function changeToMobileBanner(){
+function changeToMobileSlide(){
     let image;
-    let slides = mainSlide.slideShow.getElementsByClassName('slide');
+    let slides = mainSlide.slideShow.getElementsByClassName('slideshow__slide');
     [].forEach.call(slides, function(elem){
         image = elem.querySelector('img'),
         image.src = image.src.replace('banner_','banner_mo_');
