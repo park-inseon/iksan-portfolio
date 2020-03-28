@@ -83,12 +83,6 @@ function init(){
     });
     window.addEventListener('resize', handleWindowResize);
     
-    //PC 메뉴
-    [].forEach.call(gnbMenu, function(elem){
-        elem.addEventListener('mouseover', showMenu);
-    });    
-    header.addEventListener('mouseleave', hideMenu);
-    
     //메인 슬라이드
     cloneFirstSlide(mainSlide);
     setSliderHeight(mainSlide);
@@ -118,10 +112,20 @@ function checkPlatform(){
             platform = 'mobile';
             addMobileMenuEvent(); //모바일 메뉴
             changeToMobileSlide(); //모바일 슬라이드
+            //PC 메뉴
+            [].forEach.call(gnbMenu, function(elem){
+                elem.addEventListener('touchstart', showMenu);
+            });    
+            header.addEventListener('mouseleave', hideMenu);
         } else {
             platform = 'pc';
+            //PC 메뉴
+            [].forEach.call(gnbMenu, function(elem){
+                elem.addEventListener('mouseover', showMenu);
+            });    
+            header.addEventListener('mouseleave', hideMenu);
             //모바일 메뉴
-            if(window.innerWidth <= 768) {
+            if(window.innerWidth <= 1020) {
                 addMobileMenuEvent();
             }
         }
