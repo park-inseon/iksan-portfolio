@@ -1244,6 +1244,12 @@ body {
 }
 
 /* media query */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .gnb__link {
+        pointer-events: none;
+    }
+}
+
 @media screen and (max-width: 1760px) {
     .iksan-news {
         margin-top: 100px;
@@ -1530,11 +1536,5 @@ body {
         bottom: 100%;
         margin-bottom: 10px;
         transform: translateX(50%);
-    }
-}
-
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    .gnb__link {
-        pointer-events: none;
     }
 }
